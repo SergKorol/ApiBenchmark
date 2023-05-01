@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiBenchmark.MVC", "ApiBenchmark.MVC\ApiBenchmark.MVC.csproj", "{38A45210-D33C-41A9-BB93-BBCF1511CAE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiBenchmark.Services", "ApiBenchmark.Services\ApiBenchmark.Services.csproj", "{2FA561AE-30B2-46D9-A49E-629F2697FB03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiBenchmark.BenchmarkTests", "ApiBenchmark.BenchmarkTests\ApiBenchmark.BenchmarkTests.csproj", "{D1AEC881-A55E-45CA-A0CF-560F7CDB5DEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiBenchmark.Application", "ApiBenchmark.Application\ApiBenchmark.Application.csproj", "{18C81C55-BE5A-42DC-9227-9EA16ED90117}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38A45210-D33C-41A9-BB93-BBCF1511CAE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38A45210-D33C-41A9-BB93-BBCF1511CAE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38A45210-D33C-41A9-BB93-BBCF1511CAE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38A45210-D33C-41A9-BB93-BBCF1511CAE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FA561AE-30B2-46D9-A49E-629F2697FB03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FA561AE-30B2-46D9-A49E-629F2697FB03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FA561AE-30B2-46D9-A49E-629F2697FB03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FA561AE-30B2-46D9-A49E-629F2697FB03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1AEC881-A55E-45CA-A0CF-560F7CDB5DEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1AEC881-A55E-45CA-A0CF-560F7CDB5DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1AEC881-A55E-45CA-A0CF-560F7CDB5DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1AEC881-A55E-45CA-A0CF-560F7CDB5DEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18C81C55-BE5A-42DC-9227-9EA16ED90117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C81C55-BE5A-42DC-9227-9EA16ED90117}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18C81C55-BE5A-42DC-9227-9EA16ED90117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18C81C55-BE5A-42DC-9227-9EA16ED90117}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

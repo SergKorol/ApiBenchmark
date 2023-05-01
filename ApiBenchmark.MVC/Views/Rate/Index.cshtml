@@ -1,0 +1,144 @@
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ApiBenchmark.Application.Enities.ForexRate
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4">
+      <h2>Currency Rate</h2>
+      
+      @using (Html.BeginForm("GetRateByType", "Rate", FormMethod.Post, new { @class = "form-horizontal" }))
+      {
+          <div class="mb-3">
+              @Html.LabelFor(m => m.SourceCurrency, "Source Currency", new {@class = "form-label"})
+              @Html.DropDownListFor(m => m.SourceCurrency, new SelectList(new List<string> { "USD", "EUR", "GBP" }), "-- Select a currency --", new { @class = "form-control" })
+          </div>
+      
+          <div class="mb-3">
+              @Html.LabelFor(m => m.TargetCurrency, "Target Currency", new {@class = "form-label"})
+              @Html.DropDownListFor(m => m.TargetCurrency, new SelectList(new List<string> { "USD", "EUR", "GBP" }), "-- Select a currency --", new { @class = "form-control" })
+          </div>
+      
+          <div class="mb-3">
+              @Html.LabelFor(m => m.Amount, new {@class = "form-label"})
+              @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", type = "number", pattern="[1-9][0-9]*" })
+          </div>
+          <select class="form-select" name="transportType" aria-label="Default select example">
+              <option selected>-- Select a client --</option>
+              <option value="HttpClient">HttpClient</option>
+              <option value="Refit">Refit</option>
+              <option value="Restsharp">Restsharp</option>
+          </select>
+          <div class="btn-group" role="group" aria-label="Benchmark">
+              <button type="submit" class="btn btn-success">Post</button>
+          </div>
+      }
+    </div>
+      <div class="col-4">
+          <h2>Run benchmark tests</h2>
+          @using (Html.BeginForm("BenchmarkRunTests", "Benchmark", FormMethod.Post, new { @class = "form-horizontal" }))
+          {
+              <div class="mb-3">
+                  <select class="form-select" aria-label="-- select host --" name="host">
+                      <option selected>Open this select menu</option>
+                      <option value="net6.0">.NET6</option>
+                      <option value="net7.0">.NET7</option>
+                      <option disabled="disabled" value="net8.0">.NET8</option>
+                  </select>
+              </div>
+
+              <div class="mb-3">
+                  <select class="form-select" multiple aria-label="-- select multiple runtimes --" name="runtimes">
+                      <option selected>Open this select menu</option>
+                      <option value="net6.0">.NET6</option>
+                      <option value="net7.0">.NET7</option>
+                      <option disabled="disabled" value="net8.0">.NET8</option>
+                  </select>
+              </div>
+              
+              <div class="mb-3">
+                  @* @Html.LabelFor(m => m.SourceCurrency, "Source Currency", new {@class = "form-label"}) *@
+                  @* @Html.DropDownListFor(m => m.SourceCurrency, new SelectList(new List<string> { "HttpClient", "Refit", "Restsharp" }), "-- Select a client --", new { @class = "form-control" }) *@
+                  <select class="form-select" aria-label="Default select example" name="client">
+                    <option selected>-- Select a client --</option>
+                    <option value="HttpClient">HttpClient</option>
+                    <option value="Refit">Refit</option>
+                    <option value="Restsharp">Restsharp</option>
+                  </select>
+              </div>
+              <div class="btn-group" role="group" aria-label="Benchmark">
+                  <button type="submit" name="benchmark" onclick="displayBusyIndicator()" value="Start" class="btn btn-danger">Run Benchmark</button>
+              </div>
+          }
+      </div>
+      <div class="col-4">
+          <h2>Show reports</h2>
+          @using (Html.BeginForm("BenchmarkReports", "Benchmark", FormMethod.Post, new { @class = "form-horizontal" }))
+          {
+              <div class="mb-3">
+                  <select class="form-select" aria-label="-- select report type --" name="reportType">
+                      <option selected>All</option>
+                      <option value="HttpClient">HttpClient</option>
+                      <option value="Refit">Refit</option>
+                      <option value="Restsharp">Restsharp</option>
+                  </select>
+              </div>
+              <div class="btn-group" role="group" aria-label="Benchmark">
+                  <button type="submit" name="benchmark" value="Show" class="btn btn-danger">Show Result</button>
+              </div>
+          }
+      </div>
+  </div>
+</div>
+
+<br/>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<div class="container-fluid">
+    <div class="row">
+        @* <div id="userTable"> *@
+        @*     <p>Loading...</p> *@
+        @*     <img src="~/Content/images/loadingimage.png" alt="Please wait" /> *@
+        @* </div> *@
+        <div id="divLoading"></div>
+        
+        <div id="Rules"></div>
+        @if (@Model != null)
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                    <b>Results</b>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-group-item-success">Amount: @Model.Amount.ToString(CultureInfo.InvariantCulture)</li>
+                    <li class="list-group-item list-group-item-success">Source: @Model.SourceCurrency</li>
+                    <li class="list-group-item list-group-item-success">Target: @Model.TargetCurrency</li>
+                    <li class="list-group-item list-group-item-success">Rate: @Model.RateAmount.ToString(CultureInfo.InvariantCulture)</li>
+                    <li class="list-group-item list-group-item-success">Elapsed: @Model.ElapsedTime.ToString()</li>
+                </ul>
+            </div>
+
+            @* <div class="col"> *@
+            @*     @Html.Partial("HtmlReport") *@
+            @* </div> *@
+        }
+
+        @* @if (@Model == null) *@
+        @* { *@
+        @*     <div class="col"> *@
+        @*         @Html.Partial("HtmlReport") *@
+        @*     </div> *@
+        @* } *@
+    </div>
+</div>
+
+<partial name="_LoadingParial"/>
+
+
+
+
+

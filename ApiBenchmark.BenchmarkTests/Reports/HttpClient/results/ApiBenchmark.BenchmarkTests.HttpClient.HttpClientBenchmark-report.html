@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>ApiBenchmark.BenchmarkTests.HttpClient.HttpClientBenchmark-20230426-181350</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.13.5, OS=macOS Ventura 13.3.1 (22E261) [Darwin 22.4.0]
+Intel Core i7-8850H CPU 2.60GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
+.NET SDK=8.0.100-preview.2.23157.25
+  [Host]   : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
+  ShortRun : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>Job=ShortRun  Runtime=.NET 6.0  IterationCount=3  
+LaunchCount=1  WarmupCount=3  
+</code></pre>
+
+<table>
+<thead><tr><th>               Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Gen1</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>BenchMark_HttpClientHandler</td><td>44.24 &mu;s</td><td>3.158 &mu;s</td><td>0.173 &mu;s</td><td>0.8545</td><td>0.3662</td><td>5.03 KB</td>
+</tr></tbody></table>
+</body>
+</html>

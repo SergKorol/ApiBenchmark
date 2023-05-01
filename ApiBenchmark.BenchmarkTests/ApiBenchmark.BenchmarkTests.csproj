@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
+      <PackageReference Include="Bogus" Version="34.0.2" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.15" />
+      <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0-preview.2.23128.3" />
+      <PackageReference Include="xunit" Version="2.4.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ApiBenchmark.Application\ApiBenchmark.Application.csproj" />
+      <ProjectReference Include="..\ApiBenchmark.MVC\ApiBenchmark.MVC.csproj" />
+      <ProjectReference Include="..\ApiBenchmark.Services\ApiBenchmark.Services.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="RefitClient\" />
+      <Folder Include="RestsharpClient\" />
+    </ItemGroup>
+
+</Project>

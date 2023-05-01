@@ -1,0 +1,153 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 1 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in /Users/serhiikorol/RiderProjects/ApiBenchmarks/src/ApiBenchmark/ApiBenchmark.BenchmarkTests/bin/Release/net6.0/626bfc00-9c38-4609-b418-c92d01673eec
+// command took 2,86s and exited with 0
+// start dotnet  build -c Release --no-restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in /Users/serhiikorol/RiderProjects/ApiBenchmarks/src/ApiBenchmark/ApiBenchmark.BenchmarkTests/bin/Release/net6.0/626bfc00-9c38-4609-b418-c92d01673eec
+// command took 5,41s and exited with 0
+// ***** Done, took 00:00:08 (8.55 sec)   *****
+// Found 1 benchmarks:
+//   HttpClientBenchmark.BenchMark_HttpClientHandler: ShortRun(Runtime=.NET 6.0, IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+// **************************
+// Benchmark: HttpClientBenchmark.BenchMark_HttpClientHandler: ShortRun(Runtime=.NET 6.0, IterationCount=3, LaunchCount=1, WarmupCount=3)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 626bfc00-9c38-4609-b418-c92d01673eec.dll --anonymousPipes 100 101 --benchmarkName ApiBenchmark.BenchmarkTests.HttpClient.HttpClientBenchmark.BenchMark_HttpClientHandler --job ShortRun --benchmarkId 0 in /Users/serhiikorol/RiderProjects/ApiBenchmarks/src/ApiBenchmark/ApiBenchmark.BenchmarkTests/bin/Release/net6.0/626bfc00-9c38-4609-b418-c92d01673eec/bin/Release/net6.0
+Failed to set up high priority. Make sure you have the right permissions. Message: Permission denied
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// Runtime=.NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 338953.00 ns, 338.9530 us/op
+WorkloadJitting  1: 1 op, 115127272.00 ns, 115.1273 ms/op
+
+WorkloadPilot    1: 2 op, 787749.00 ns, 393.8745 us/op
+WorkloadPilot    2: 3 op, 581853.00 ns, 193.9510 us/op
+WorkloadPilot    3: 4 op, 682492.00 ns, 170.6230 us/op
+WorkloadPilot    4: 5 op, 572780.00 ns, 114.5560 us/op
+WorkloadPilot    5: 6 op, 449774.00 ns, 74.9623 us/op
+WorkloadPilot    6: 7 op, 894532.00 ns, 127.7903 us/op
+WorkloadPilot    7: 8 op, 794956.00 ns, 99.3695 us/op
+WorkloadPilot    8: 9 op, 1610930.00 ns, 178.9922 us/op
+WorkloadPilot    9: 10 op, 762715.00 ns, 76.2715 us/op
+WorkloadPilot   10: 11 op, 771074.00 ns, 70.0976 us/op
+WorkloadPilot   11: 12 op, 826697.00 ns, 68.8914 us/op
+WorkloadPilot   12: 13 op, 785554.00 ns, 60.4272 us/op
+WorkloadPilot   13: 14 op, 709930.00 ns, 50.7093 us/op
+WorkloadPilot   14: 15 op, 1081929.00 ns, 72.1286 us/op
+WorkloadPilot   15: 16 op, 768044.00 ns, 48.0027 us/op
+WorkloadPilot   16: 32 op, 1295064.00 ns, 40.4708 us/op
+WorkloadPilot   17: 64 op, 5617992.00 ns, 87.7811 us/op
+WorkloadPilot   18: 128 op, 4994818.00 ns, 39.0220 us/op
+WorkloadPilot   19: 256 op, 11949233.00 ns, 46.6767 us/op
+WorkloadPilot   20: 512 op, 42630129.00 ns, 83.2620 us/op
+WorkloadPilot   21: 1024 op, 99587793.00 ns, 97.2537 us/op
+WorkloadPilot   22: 2048 op, 145443937.00 ns, 71.0175 us/op
+WorkloadPilot   23: 4096 op, 337904351.00 ns, 82.4962 us/op
+WorkloadPilot   24: 8192 op, 488841926.00 ns, 59.6731 us/op
+WorkloadPilot   25: 16384 op, 723752137.00 ns, 44.1743 us/op
+
+WorkloadWarmup   1: 16384 op, 693702108.00 ns, 42.3402 us/op
+WorkloadWarmup   2: 16384 op, 767849048.00 ns, 46.8658 us/op
+WorkloadWarmup   3: 16384 op, 683697651.00 ns, 41.7296 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 16384 op, 757819874.00 ns, 46.2537 us/op
+WorkloadActual   2: 16384 op, 801577125.00 ns, 48.9244 us/op
+WorkloadActual   3: 16384 op, 891690232.00 ns, 54.4245 us/op
+
+// AfterActualRun
+WorkloadResult   1: 16384 op, 757819874.00 ns, 46.2537 us/op
+WorkloadResult   2: 16384 op, 801577125.00 ns, 48.9244 us/op
+WorkloadResult   3: 16384 op, 891690232.00 ns, 54.4245 us/op
+// GC:  12 4 1 83067616 16384
+// Threading:  189 176 16384
+// Exceptions:  0,116943359375
+
+// AfterAll
+System.IO.FileLoadException: Could not load file or assembly 'System.Net.Quic, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'. The system cannot open the file.
+ (0x80070004)
+File name: 'System.Net.Quic, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
+   at System.Reflection.CustomAttribute._CreateCaObject(RuntimeModule pModule, RuntimeType type, IRuntimeMethodInfo pCtor, Byte** ppBlob, Byte* pEndBlob, Int32* pcNamedArgs)
+   at System.Reflection.CustomAttribute.AddCustomAttributes(ListBuilder`1& attributes, RuntimeModule decoratedModule, Int32 decoratedMetadataToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, ListBuilder`1 derivedAttributes)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeMethodInfo method, RuntimeType caType, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at System.Diagnostics.StackTrace.TryResolveStateMachineMethod(MethodBase& method, Type& declaringType)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat, StringBuilder sb)
+   at System.Exception.get_StackTrace()
+   at System.ComponentModel.Win32Exception.ToString()
+   at System.Exception.ToString()
+   at System.IO.TextWriter.WriteLine(Object value)
+   at System.IO.TextWriter.SyncTextWriter.WriteLine(Object value)
+   at System.Console.WriteLine(Object value)
+   at ApiBenchmark.Services.Clients.HttpClientService.GetRates(String sourceCurrency, String targetCurrency)
+   at ApiBenchmark.Application.Rates.AddRateHttpClientCommandHandler.Handle(AddRateHttpClientCommand request, CancellationToken cancellationToken)
+   at ApiBenchmark.BenchmarkTests.HttpClient.HttpClientBenchmark.Handler2()
+// Benchmark Process 95239 has exited with code 0.
+
+Mean = 49.867 μs, StdErr = 2.405 μs (4.82%), N = 3, StdDev = 4.166 μs
+Min = 46.254 μs, Q1 = 47.589 μs, Median = 48.924 μs, Q3 = 51.674 μs, Max = 54.424 μs
+IQR = 4.085 μs, LowerFence = 41.461 μs, UpperFence = 57.803 μs
+ConfidenceInterval = [-26.140 μs; 125.875 μs] (CI 99.9%), Margin = 76.008 μs (152.42% of Mean)
+Skewness = 0.21, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 0 (0,0%) benchmark(s) to run. Estimated finish 2023-04-26 18:05 (0h 0m from now) **
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  Reports/HttpClient/results/ApiBenchmark.BenchmarkTests.HttpClient.HttpClientBenchmark-report.csv
+  Reports/HttpClient/results/ApiBenchmark.BenchmarkTests.HttpClient.HttpClientBenchmark-report-github.md
+  Reports/HttpClient/results/ApiBenchmark.BenchmarkTests.HttpClient.HttpClientBenchmark-report.html
+
+// * Detailed results *
+HttpClientBenchmark.BenchMark_HttpClientHandler: ShortRun(Runtime=.NET 6.0, IterationCount=3, LaunchCount=1, WarmupCount=3)
+Runtime = .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 49.867 μs, StdErr = 2.405 μs (4.82%), N = 3, StdDev = 4.166 μs
+Min = 46.254 μs, Q1 = 47.589 μs, Median = 48.924 μs, Q3 = 51.674 μs, Max = 54.424 μs
+IQR = 4.085 μs, LowerFence = 41.461 μs, UpperFence = 57.803 μs
+ConfidenceInterval = [-26.140 μs; 125.875 μs] (CI 99.9%), Margin = 76.008 μs (152.42% of Mean)
+Skewness = 0.21, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[43.798 μs ; 51.380 μs) | @@
+[51.380 μs ; 58.216 μs) | @
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet=v0.13.5, OS=macOS Ventura 13.3.1 (22E261) [Darwin 22.4.0]
+Intel Core i7-8850H CPU 2.60GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
+.NET SDK=8.0.100-preview.2.23157.25
+  [Host]   : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
+  ShortRun : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
+
+Job=ShortRun  Runtime=.NET 6.0  IterationCount=3  
+LaunchCount=1  WarmupCount=3  
+
+|                      Method |     Mean |    Error |   StdDev |   Gen0 |   Gen1 |   Gen2 | Allocated |
+|---------------------------- |---------:|---------:|---------:|-------:|-------:|-------:|----------:|
+| BenchMark_HttpClientHandler | 49.87 μs | 76.01 μs | 4.166 μs | 0.7324 | 0.2441 | 0.0610 |   4.95 KB |
+
+// * Legends *
+  Mean      : Arithmetic mean of all measurements
+  Error     : Half of 99.9% confidence interval
+  StdDev    : Standard deviation of all measurements
+  Gen0      : GC Generation 0 collects per 1000 operations
+  Gen1      : GC Generation 1 collects per 1000 operations
+  Gen2      : GC Generation 2 collects per 1000 operations
+  Allocated : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  1 μs      : 1 Microsecond (0.000001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:00:15 (15.12 sec), executed benchmarks: 1
+
+Global total time: 00:00:24 (24.26 sec), executed benchmarks: 1
+// * Artifacts cleanup *
