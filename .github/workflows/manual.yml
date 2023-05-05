@@ -24,10 +24,6 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: My step
-        run: echo "Hello, world!"my-job:
-    runs-on: self-hosted
-    steps:
-      - name: My step
         run: echo "Hello, world!"
   # This workflow contains a single job called "greet"
   greet:
