@@ -25,6 +25,7 @@ jobs:
     steps:
     - name: My step
       run: echo "Hello ${{ inputs.name }}"
+      
   # This workflow contains a single job called "greet"
   greet:
     # The type of runner that the job will run on
