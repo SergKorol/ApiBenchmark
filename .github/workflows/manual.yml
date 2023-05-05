@@ -23,8 +23,8 @@ jobs:
   my-job:
     runs-on: self-hosted
     steps:
-      - name: My step
-        run: echo "Hello, world!"
+    - name: My step
+      run: echo "Hello ${{ inputs.name }}"
   # This workflow contains a single job called "greet"
   greet:
     # The type of runner that the job will run on
