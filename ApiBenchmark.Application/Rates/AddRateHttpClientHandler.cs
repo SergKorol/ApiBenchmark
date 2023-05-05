@@ -1,38 +1,35 @@
-using System.Threading;
-using System.Threading.Tasks;
 using ApiBenchmark.Application.Common.Interfaces;
-using ApiBenchmark.Application.Enities;
+using ApiBenchmark.Application.Entities;
 using ApiBenchmark.Application.Rates.Commands;
 using MediatR;
 
-namespace ApiBenchmark.Application.Rates;
-
-
-public record AddRateHttpClientCommand : AddRateCommand { }
-public class AddRateHttpClientCommandHandler : IRequestHandler<AddRateHttpClientCommand, ForexRate>
+namespace ApiBenchmark.Application.Rates
 {
+    public record AddRateHttpClientCommand : AddRateCommand;
 
-    private readonly IForexAPIHttpClient _forexHttpClient;
-        
-    public AddRateHttpClientCommandHandler(IForexAPIHttpClient forexHttpClient)
+    public class AddRateHttpClientCommandHandler : IRequestHandler<AddRateHttpClientCommand, ForexRate>
     {
-        _forexHttpClient = forexHttpClient;
-    }
-        
-    public async Task<ForexRate> Handle(AddRateHttpClientCommand request, CancellationToken cancellationToken)
-    {
-        decimal rate = 1;
-        if (request.SourceCurrency != request.TargetCurrency)
+        private readonly IForexApiHttpClient _forexHttpClient;
+
+        public AddRateHttpClientCommandHandler(IForexApiHttpClient forexHttpClient)
         {
-            rate = await _forexHttpClient.GetRates(request.SourceCurrency, request.TargetCurrency);
+            _forexHttpClient = forexHttpClient;
         }
-        
-        return new ForexRate
+
+        public async Task<ForexRate> Handle(AddRateHttpClientCommand request, CancellationToken cancellationToken)
         {
-            Amount = request.Amount,
-            SourceCurrency = request.SourceCurrency,
-            TargetCurrency = request.TargetCurrency,
-            RateAmount = rate * request.Amount
-        };
+            decimal rate = request.SourceCurrency == request.TargetCurrency
+                ? 1
+                : await _forexHttpClient.GetRates(request.SourceCurrency,
+                    request.TargetCurrency);
+
+            return new ForexRate
+            {
+                Amount = request.Amount,
+                SourceCurrency = request.SourceCurrency,
+                TargetCurrency = request.TargetCurrency,
+                RateAmount = rate * request.Amount
+            };
+        }
     }
 }

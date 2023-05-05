@@ -28,9 +28,4 @@
       <ProjectReference Include="..\ApiBenchmark.Services\ApiBenchmark.Services.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="RefitClient\" />
-      <Folder Include="RestsharpClient\" />
-    </ItemGroup>
-
 </Project>

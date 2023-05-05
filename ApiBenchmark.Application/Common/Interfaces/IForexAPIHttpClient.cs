@@ -1,8 +1,6 @@
-using System.Threading.Tasks;
-
 namespace ApiBenchmark.Application.Common.Interfaces;
 
-public interface IForexAPIHttpClient
+public interface IForexApiHttpClient
 {
-    public Task<decimal> GetRates(string sourceCurrency, string targetCurrency);
+    public Task<decimal> GetRates(string? sourceCurrency, string? targetCurrency);
 }

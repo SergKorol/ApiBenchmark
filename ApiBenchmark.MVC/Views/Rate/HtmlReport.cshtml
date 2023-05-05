@@ -1,11 +1,11 @@
-@model ApiBenchmark.Application.Enities.Report
+@model ApiBenchmark.Application.Entities.Report
 
 @{
     ViewData["Title"] = "HtmlReport";
     Layout = "_Layout";
 }
 
-@if (@Model?.Content != null)
+@if (@Model.Content != null)
 {
     <div class="container">@Html.Raw(@Model.Content)</div>
 }

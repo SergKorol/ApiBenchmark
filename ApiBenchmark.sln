@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiBenchmark.BenchmarkTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiBenchmark.Application", "ApiBenchmark.Application\ApiBenchmark.Application.csproj", "{18C81C55-BE5A-42DC-9227-9EA16ED90117}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiBenchmark.UnitTests", "ApiBenchmark.UnitTests\ApiBenchmark.UnitTests.csproj", "{89F225D5-00F6-4CBA-A0D0-B1D9C30BD10B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{18C81C55-BE5A-42DC-9227-9EA16ED90117}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18C81C55-BE5A-42DC-9227-9EA16ED90117}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18C81C55-BE5A-42DC-9227-9EA16ED90117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89F225D5-00F6-4CBA-A0D0-B1D9C30BD10B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89F225D5-00F6-4CBA-A0D0-B1D9C30BD10B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89F225D5-00F6-4CBA-A0D0-B1D9C30BD10B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89F225D5-00F6-4CBA-A0D0-B1D9C30BD10B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

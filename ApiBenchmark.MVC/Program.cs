@@ -1,5 +1,4 @@
 using ApiBenchmark.Application;
-using ApiBenchmark.MVC;
 using ApiBenchmark.Services.Module;
 using ApiBenchmark.Services.Options;
 
@@ -37,12 +36,6 @@ app.MapControllerRoute(
 
 app.Run();
 
-public static partial class Program
-{
-    // static void Main(string[] args)
-    // {
-    //     ScriptRunner.Run();
-    // }
-}
+public static partial class Program { }
 
 

@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>ApiBenchmark.BenchmarkTests.HttpClient.HttpClientBenchmark-20230426-181350</title>
+<title>ApiBenchmark.BenchmarkTests.HttpClient.HttpClientBenchmark-20230505-143157</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,20 +13,21 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet=v0.13.5, OS=macOS Ventura 13.3.1 (22E261) [Darwin 22.4.0]
+BenchmarkDotNet=v0.13.5, OS=macOS Ventura 13.3.1 (a) (22E772610a) [Darwin 22.4.0]
 Intel Core i7-8850H CPU 2.60GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
-.NET SDK=8.0.100-preview.2.23157.25
-  [Host]   : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
-  ShortRun : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
+.NET SDK=8.0.100-preview.3.23178.7
+  [Host]   : .NET 6.0.16 (6.0.1623.17311), X64 RyuJIT AVX2
+  ShortRun : .NET 6.0.16 (6.0.1623.17311), X64 RyuJIT AVX2
 </code></pre>
-<pre><code>Job=ShortRun  Runtime=.NET 6.0  IterationCount=3  
-LaunchCount=1  WarmupCount=3  
+<pre><code>Job=ShortRun  IterationCount=3  LaunchCount=1  
+WarmupCount=3  
 </code></pre>
 
 <table>
-<thead><tr><th>               Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Gen1</th><th>Allocated</th>
+<thead><tr><th>               Method</th><th>Runtime</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Gen1</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>BenchMark_HttpClientHandler</td><td>44.24 &mu;s</td><td>3.158 &mu;s</td><td>0.173 &mu;s</td><td>0.8545</td><td>0.3662</td><td>5.03 KB</td>
+</thead><tbody><tr><td>BenchMark_HttpClientHandler</td><td>.NET 6.0</td><td>39.62 &mu;s</td><td>12.92 &mu;s</td><td>0.708 &mu;s</td><td>0.7935</td><td>0.4272</td><td>4.89 KB</td>
+</tr><tr><td>BenchMark_HttpClientHandler</td><td>.NET 7.0</td><td>50.59 &mu;s</td><td>62.91 &mu;s</td><td>3.448 &mu;s</td><td>1.5869</td><td>0.4883</td><td>8.78 KB</td>
 </tr></tbody></table>
 </body>
 </html>

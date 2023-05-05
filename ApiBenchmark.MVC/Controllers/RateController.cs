@@ -1,8 +1,6 @@
-using ApiBenchmark.App.Rates;
-using ApiBenchmark.Application.Enities;
+using ApiBenchmark.Application.Entities;
 using ApiBenchmark.Application.Rates;
 using MediatR;
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiBenchmark.MVC.Controllers;
@@ -42,8 +40,7 @@ public class RateController : Controller
     }
     
     
-    // [HttpPost("httpclient/rate")]
-    public async Task<IActionResult> GetRateHttpClient(string sourceCurrency, string targetCurrency, decimal amount)
+    public async Task<IActionResult> GetRateHttpClient(string? sourceCurrency, string? targetCurrency, decimal amount)
     {
         if (sourceCurrency is null || targetCurrency is null || (amount == 0 || amount < 0))
         {
@@ -62,7 +59,6 @@ public class RateController : Controller
         return RedirectToAction("Index", response);
     }
     
-    // [HttpPost("restsharp/rate")]
     public async Task<IActionResult> GetRateRestSharp(string sourceCurrency, string targetCurrency, decimal amount)
     {
         var command = new AddRateRestsharpCommand
@@ -77,8 +73,7 @@ public class RateController : Controller
         response.ElapsedTime = watch.Elapsed;
         return RedirectToAction("Index", response);
     }
-    //
-    // [HttpPost("refit/rate")]
+    
     public async Task<IActionResult> GetRateRefit(string sourceCurrency, string targetCurrency, decimal amount)
     {
         var command = new AddRateRefitCommand
@@ -95,15 +90,13 @@ public class RateController : Controller
     }
     public IActionResult GetRateByType(string sourceCurrency, string targetCurrency, decimal amount, string transportType)
     {
-        var tesr = true;
-        
         switch (transportType)
         {
             case "HttpClient":
                 return RedirectToAction("GetRateHttpClient", new {sourceCurrency, targetCurrency, amount});
             case "Refit":
                 return RedirectToAction("GetRateRefit", new {sourceCurrency, targetCurrency, amount});
-            case "Restsharp":
+            case "RestSharp":
                 return RedirectToAction("GetRateRestSharp", new {sourceCurrency, targetCurrency, amount});
             default:
                 return RedirectToAction("Index");

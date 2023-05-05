@@ -1,4 +1,4 @@
-using ApiBenchmark.Application.Enities;
+using ApiBenchmark.Application.Entities;
 using MediatR;
 
 namespace ApiBenchmark.Application.Rates.Commands;
@@ -6,6 +6,6 @@ namespace ApiBenchmark.Application.Rates.Commands;
 public record AddRateCommand : IRequest<ForexRate>
 {
     public decimal Amount { get; init; }
-    public string SourceCurrency { get; init; }
-    public string TargetCurrency { get; init; }
+    public string? SourceCurrency { get; init; }
+    public string? TargetCurrency { get; init; }
 }

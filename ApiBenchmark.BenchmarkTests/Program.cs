@@ -1,19 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using System;
-using System.IO;
-using System.Reflection;
-using System.Text;
-using ApiBenchmark.BenchmarkTests;
-using ApiBenchmark.BenchmarkTests.HttpClient;
+﻿using ApiBenchmark.BenchmarkTests.HttpClient;
+using ApiBenchmark.BenchmarkTests.RefitClient;
+using ApiBenchmark.BenchmarkTests.RestsharpClient;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
-using BenchmarkDotNet.Engines;
 using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
-using BenchmarkDotNet.Toolchains.CsProj;
-using BenchmarkDotNet.Toolchains.DotNetCli;
 
 [MemoryDiagnoser]
 public class Program
@@ -24,16 +16,13 @@ public class Program
         Console.WriteLine(test);
         if (args == null || args.Length == 0)
         {
-            throw new ArgumentNullException("The arguments can't be NULL or empty");
+            throw new ArgumentNullException(nameof(args));
         }
         ClientHandler(args);
     }
     
     private static void ClientHandler(string[] args)
     {
-        // BenchmarkRunner.Run<HttpClientBenchmark>(ManualConfig
-        //     .Create(DefaultConfig.Instance)
-        //     .AddJob(Job.ShortRun));
         string path;
         string currentDirectory = Directory.GetCurrentDirectory();
         Console.WriteLine($"Current: {currentDirectory}");
@@ -53,25 +42,29 @@ public class Program
             switch (arg)
             {
                 case "HttpClient":
-                    var config =
+                    var httpClientConfig =
                         DefaultConfig
                             .Instance
                             .WithArtifactsPath($"{path}/Reports/{arg}");
-                    RuntimesHandler(config, args);     
-                    BenchmarkRunner.Run<HttpClientBenchmark>(config);
+                    RuntimesHandler(httpClientConfig, args);     
+                    BenchmarkRunner.Run<HttpClientBenchmark>(httpClientConfig);
                     break;
                 case "Refit":
-                    // BenchmarkRunner.Run<RefitBenchmark>(ManualConfig.Create(DefaultConfig.Instance.WithArtifactsPath($"{projectDirectory}/{assemblyName}/Reports/{arg}")).AddJob(Job.ShortRun));
+                    var refitClientConfig =
+                        DefaultConfig
+                            .Instance
+                            .WithArtifactsPath($"{path}/Reports/{arg}");
+                    RuntimesHandler(refitClientConfig, args);     
+                    BenchmarkRunner.Run<RefitClientBenchmark>(refitClientConfig);
                     break;
                 case "RestSharp":
-                    // BenchmarkRunner.Run<RestSharpBenchmark>(ManualConfig.Create(DefaultConfig.Instance.WithArtifactsPath($"{projectDirectory}/{assemblyName}/Reports/{arg}")).AddJob(Job.ShortRun));
+                    var restsharpClientConfig =
+                        DefaultConfig
+                            .Instance
+                            .WithArtifactsPath($"{path}/Reports/{arg}");
+                    RuntimesHandler(restsharpClientConfig, args);     
+                    BenchmarkRunner.Run<RestsharpClientBenchmark>(restsharpClientConfig);
                     break;
-                case "All":
-                    // BenchmarkRunner.Run<HttpClientBenchmark>(ManualConfig.Create(DefaultConfig.Instance.WithArtifactsPath($"{projectDirectory}/{assemblyName}/Reports")).AddJob(Job.ShortRun));
-                    // BenchmarkRunner.Run<RefitBenchmark>(ManualConfig.Create(DefaultConfig.Instance.WithArtifactsPath($"{projectDirectory}/{assemblyName}/Reports")).AddJob(Job.ShortRun));
-                    // BenchmarkRunner.Run<RestSharpBenchmark>(ManualConfig.Create(DefaultConfig.Instance.WithArtifactsPath($"{projectDirectory}/{assemblyName}/Reports")).AddJob(Job.ShortRun));
-                    break;
-        
             }
         }
     }
@@ -80,16 +73,14 @@ public class Program
     {
         foreach (var arg in args)
         {
-            if (arg == "--runtimes")
+            if (arg != "--runtimes") continue;
+            var next = Array.IndexOf(args, arg) + 1;
+            while (args[next] != "--filter")
             {
-                var next = Array.IndexOf(args, arg) + 1;
-                while (args[next] != "--filter")
-                {
-                    if (config != null) SetRuntimes(args[next], config);
-                    next++;
-                }
-                break;
+                if (config != null) SetRuntimes(args[next], config);
+                next++;
             }
+            break;
         }
     }
 
