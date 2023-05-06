@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Bogus" Version="34.0.2" />
+      <PackageReference Include="FluentAssertions" Version="6.11.0" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0-preview-20230223-05" />
+      <PackageReference Include="Moq" Version="4.18.4" />
+      <PackageReference Include="xunit" Version="2.4.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ApiBenchmark.Application\ApiBenchmark.Application.csproj" />
+    </ItemGroup>
+
+</Project>
