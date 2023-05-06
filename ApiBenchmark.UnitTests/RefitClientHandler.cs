@@ -16,10 +16,10 @@ public class RefitClientHandler
     [Fact]
     public async Task HandleRefitClientRequest_Success()
     {
-        var refitClientAPIMock = new Mock<IForexApiRefit>();
-        refitClientAPIMock.Setup(x => x.GetRates(SourceCurrency,TargetCurrency))
+        var refitClientApiMock = new Mock<IForexApiRefit>();
+        refitClientApiMock.Setup(x => x.GetRates(SourceCurrency,TargetCurrency))
             .ReturnsAsync(0.8M);
-        var handler = new AddRateRefitCommandHandler(refitClientAPIMock.Object);
+        var handler = new AddRateRefitCommandHandler(refitClientApiMock.Object);
 
         var command = new Faker<AddRateRefitCommand>()
             .RuleFor(x => x.Amount, Amount)
@@ -29,7 +29,7 @@ public class RefitClientHandler
 
         var result = await handler.Handle(command, It.IsAny<CancellationToken>());
 
-        refitClientAPIMock.Verify(x => x.GetRates(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+        refitClientApiMock.Verify(x => x.GetRates(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         result.Amount.Should().Be(command.Amount);
         result.SourceCurrency.Should().Be(command.SourceCurrency);
         result.TargetCurrency.Should().Be(command.TargetCurrency);
@@ -40,8 +40,8 @@ public class RefitClientHandler
     [Fact]
     public async Task HandleRefitClientRequest_IfRateNotExists()
     {
-        var refitClientAPIMock = new Mock<IForexApiRefit>();
-        var handler = new AddRateRefitCommandHandler(refitClientAPIMock.Object);
+        var refitClientApiMock = new Mock<IForexApiRefit>();
+        var handler = new AddRateRefitCommandHandler(refitClientApiMock.Object);
 
         var command = new Faker<AddRateRefitCommand>()
             .RuleFor(x => x.Amount, Amount)
@@ -51,7 +51,7 @@ public class RefitClientHandler
 
         var result = await handler.Handle(command, It.IsAny<CancellationToken>());
 
-        refitClientAPIMock.Verify(x => x.GetRates(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+        refitClientApiMock.Verify(x => x.GetRates(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         result.Amount.Should().Be(command.Amount);
         result.SourceCurrency.Should().Be(command.SourceCurrency);
         result.TargetCurrency.Should().Be(command.TargetCurrency);
@@ -62,15 +62,15 @@ public class RefitClientHandler
     [Fact]
     public async Task HandleRefitClientRequest_IfCommandEmpty()
     {
-        var refitClientAPIMock = new Mock<IForexApiRefit>();
-        var handler = new AddRateRefitCommandHandler(refitClientAPIMock.Object);
+        var refitClientApiMock = new Mock<IForexApiRefit>();
+        var handler = new AddRateRefitCommandHandler(refitClientApiMock.Object);
 
         var command = new Faker<AddRateRefitCommand>()
             .Generate();
 
         var result = await handler.Handle(command, It.IsAny<CancellationToken>());
 
-        refitClientAPIMock.Verify(x => x.GetRates(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+        refitClientApiMock.Verify(x => x.GetRates(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
         result.Amount.Should().Be(default);
         result.SourceCurrency.Should().Be(null);
         result.TargetCurrency.Should().Be(null);

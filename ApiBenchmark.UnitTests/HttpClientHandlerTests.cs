@@ -5,6 +5,8 @@ using FluentAssertions;
 using Moq;
 using Xunit;
 
+namespace ApiBenchmark.UnitTests;
+
 public class HttpClientHandlerTests
 {
     private const decimal Amount = 10;
@@ -14,10 +16,10 @@ public class HttpClientHandlerTests
     [Fact]
     public async void HandleHttpClientRequest_Success()
     {
-        var httpClientAPIMock = new Mock<IForexApiHttpClient>();
-        httpClientAPIMock.Setup(x => x.GetRates(SourceCurrency,TargetCurrency))
+        var httpClientApiMock = new Mock<IForexApiHttpClient>();
+        httpClientApiMock.Setup(x => x.GetRates(SourceCurrency,TargetCurrency))
             .ReturnsAsync(0.8M);
-        var handler = new AddRateHttpClientCommandHandler(httpClientAPIMock.Object);
+        var handler = new AddRateHttpClientCommandHandler(httpClientApiMock.Object);
 
         var command = new Faker<AddRateHttpClientCommand>()
             .RuleFor(x => x.Amount, Amount)
@@ -27,7 +29,7 @@ public class HttpClientHandlerTests
 
         var result = await handler.Handle(command, It.IsAny<CancellationToken>());
 
-        httpClientAPIMock.Verify(x => x.GetRates(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+        httpClientApiMock.Verify(x => x.GetRates(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         result.Amount.Should().Be(command.Amount);
         result.SourceCurrency.Should().Be(command.SourceCurrency);
         result.TargetCurrency.Should().Be(command.TargetCurrency);
@@ -37,8 +39,8 @@ public class HttpClientHandlerTests
     [Fact]
     public async void HandleHttpClientRequest_IfRateNotExists()
     {
-        var httpClientAPIMock = new Mock<IForexApiHttpClient>();
-        var handler = new AddRateHttpClientCommandHandler(httpClientAPIMock.Object);
+        var httpClientApiMock = new Mock<IForexApiHttpClient>();
+        var handler = new AddRateHttpClientCommandHandler(httpClientApiMock.Object);
 
         var command = new Faker<AddRateHttpClientCommand>()
             .RuleFor(x => x.Amount, Amount)
@@ -48,7 +50,7 @@ public class HttpClientHandlerTests
 
         var result = await handler.Handle(command, It.IsAny<CancellationToken>());
 
-        httpClientAPIMock.Verify(x => x.GetRates(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+        httpClientApiMock.Verify(x => x.GetRates(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         result.Amount.Should().Be(command.Amount);
         result.SourceCurrency.Should().Be(command.SourceCurrency);
         result.TargetCurrency.Should().Be(command.TargetCurrency);
@@ -58,21 +60,18 @@ public class HttpClientHandlerTests
     [Fact]
     public async void HandleHttpClientRequest_IfCommandEmpty()
     {
-        var httpClientAPIMock = new Mock<IForexApiHttpClient>();
-        var handler = new AddRateHttpClientCommandHandler(httpClientAPIMock.Object);
+        var httpClientApiMock = new Mock<IForexApiHttpClient>();
+        var handler = new AddRateHttpClientCommandHandler(httpClientApiMock.Object);
 
         var command = new Faker<AddRateHttpClientCommand>()
             .Generate();
 
         var result = await handler.Handle(command, It.IsAny<CancellationToken>());
 
-        httpClientAPIMock.Verify(x => x.GetRates(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+        httpClientApiMock.Verify(x => x.GetRates(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
         result.Amount.Should().Be(default);
         result.SourceCurrency.Should().Be(null);
         result.TargetCurrency.Should().Be(null);
         result.RateAmount.Should().Be(default);
     }
 }
-
-
-
