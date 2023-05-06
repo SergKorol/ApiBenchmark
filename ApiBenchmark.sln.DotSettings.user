@@ -7,9 +7,5 @@
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e340b37b_002D8ac2_002D428b_002D862b_002D84fb4d263174/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="HandleHttpClientRequest_Error" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::89F225D5-00F6-4CBA-A0D0-B1D9C30BD10B::net7.0::HttpClientHandlerTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::89F225D5-00F6-4CBA-A0D0-B1D9C30BD10B::net7.0::ApiBenchmark.UnitTests.RefitClientHandler&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::89F225D5-00F6-4CBA-A0D0-B1D9C30BD10B::net7.0::ApiBenchmark.UnitTests.RestsharpClientHandlerTests&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;Project Location="/Users/serhiikorol/RiderProjects/ApiBenchmarks/src/ApiBenchmark/ApiBenchmark.UnitTests" Presentation="&amp;lt;ApiBenchmark.UnitTests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
