@@ -27,12 +27,3 @@ echo "Runtimes: "$runtimes
 echo "Client: "$client
 
 dotnet run -c Release --framework $host --runtimes $runtimes --filter $client
-#if [ -z "$client" ]; then
-#    dotnet run -project ApiBenchmark.BenchmarkTests.csproj -c Release -f $host --runtimes $runtimes
-#    else 
-#    dotnet run -project ApiBenchmark.BenchmarkTests.csproj -c Release -f $host --runtimes $runtimes --filter $client
-#fi
-
-# This script is used to run the benchmarks in the ApiBenchmark.BenchmarkTests project.
-
-
