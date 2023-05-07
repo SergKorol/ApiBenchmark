@@ -82,3 +82,6 @@ WarmupCount=3
 |--------------------------------- |--------- |---------:|---------:|----------:|-------:|----------:|
 | BenchMark_RestsharpClientHandler | .NET 6.0 | 1.177 ms | 1.035 ms | 0.0567 ms | 7.8125 |  53.52 KB |
 | BenchMark_RestsharpClientHandler | .NET 7.0 | 1.556 ms | 5.196 ms | 0.2848 ms | 7.8125 |  46.03 KB |
+
+
+<a href="https://www.buymeacoffee.com/b9z99kntvtQ" target="_blank"><img src="http://dartfordwaffler.co.uk/wp-content/uploads/2021/03/buy-me-a-beer.jpg" alt="Buy Me A Beer" style="height: 60px !important;width: 217px !important;" ></a>
