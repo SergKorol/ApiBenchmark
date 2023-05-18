@@ -1,0 +1,12 @@
+version: '3.4'
+services:
+  webmvc:
+    container_name: benchmarkmvc
+    build:
+      context: .
+      dockerfile: src/ApiBenchmark/ApiBenchmark.MVC/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "5005:80"
